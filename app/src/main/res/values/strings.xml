@@ -2,6 +2,7 @@
     <string name="app_name">Nano (Assessment)</string>
     <string name="something_went_wrong">Something went wrong, Please try latter</string>
     <string name="image_source">image source</string>
+    <string name="rating_bar">Rating bar</string>
     <string name="news_details">News Details</string>
     <string name="account">Account</string>
     <string name="favorites">Favorites</string>
@@ -15,4 +16,6 @@
     <string name="login_error">Something went wrong, try again!</string>
     <string name="email_required">Email Required</string>
     <string name="password_required">Password Required</string>
+    <string name="details">Details</string>
+    <string name="order_now">Order Now</string>
 </resources>

@@ -12,6 +12,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import shafat.projects.assesment.BuildConfig
+import shafat.projects.assesment.datasource.retrofit.utils.AuthInterceptor
 import shafat.projects.assesment.datasource.retrofit.utils.NetworkConnectionInterceptor
 import shafat.projects.assesment.utils.SavedData.ProjectKeys.BASE_URL
 import java.util.concurrent.TimeUnit
@@ -43,7 +44,8 @@ class RetrofitDi {
     @Singleton
     @Provides
     fun provideOkHttpClient(
-        networkConnectionInterceptor: NetworkConnectionInterceptor
+        networkConnectionInterceptor: NetworkConnectionInterceptor,
+        authInterceptor: AuthInterceptor
     ): OkHttpClient {
         return OkHttpClient.Builder().apply {
             connectTimeout(60, TimeUnit.SECONDS)
@@ -51,17 +53,17 @@ class RetrofitDi {
             writeTimeout(60, TimeUnit.SECONDS)
             retryOnConnectionFailure(true)
         }.also {
-                val logInterceptor = HttpLoggingInterceptor()
-                logInterceptor.level = if (BuildConfig.DEBUG) {
-                    HttpLoggingInterceptor.Level.BODY
-                } else {
-                    HttpLoggingInterceptor.Level.NONE
-                }
-                it.addInterceptor(logInterceptor)
+            val logInterceptor = HttpLoggingInterceptor()
+            logInterceptor.level = if (BuildConfig.DEBUG) {
+                HttpLoggingInterceptor.Level.BODY
+            } else {
+                HttpLoggingInterceptor.Level.NONE
             }
+            it.addInterceptor(logInterceptor)
+        }
             .also {
                 it.addInterceptor(networkConnectionInterceptor)
-            }
+            }.also { it.addInterceptor(authInterceptor) }
             .build()
     }
 }

@@ -19,6 +19,7 @@ import shafat.projects.assesment.presentation.adapters.ProductsListAdapter
 import shafat.projects.assesment.presentation.states.ProductScreenState
 import shafat.projects.assesment.presentation.viewmodels.ProductsViewModel
 import shafat.projects.assesment.utils.LoadingScreen
+import shafat.projects.assesment.utils.SavedData.BundleKeys.PRODUCT_ID
 import shafat.projects.assesment.utils.showSnackBar
 
 @ExperimentalCoroutinesApi
@@ -29,7 +30,7 @@ class AllProductsFragment : Fragment(R.layout.fragment_products_list) {
 
     private lateinit var binding: FragmentProductsListBinding
     private lateinit var navController: NavController
-    lateinit var adapter: ProductsListAdapter
+    private lateinit var adapter: ProductsListAdapter
 
     private lateinit var mView: View
     private lateinit var loading: LoadingScreen
@@ -40,7 +41,10 @@ class AllProductsFragment : Fragment(R.layout.fragment_products_list) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentProductsListBinding.inflate(inflater, container, false)
+        binding = FragmentProductsListBinding.inflate(
+            inflater,
+            container, false
+        )
         mView = binding.root
         return mView
     }
@@ -49,6 +53,7 @@ class AllProductsFragment : Fragment(R.layout.fragment_products_list) {
         super.onViewCreated(view, savedInstanceState)
         init()
         attachViewModel()
+        makeAPICall()
     }
 
     private fun init() {
@@ -74,6 +79,8 @@ class AllProductsFragment : Fragment(R.layout.fragment_products_list) {
 
             is ProductScreenState.GetAllProductsInSuccessful -> {
                 loading.hideLoading()
+                dataList = state.productsList ?: emptyList()
+                setAdapterSearchToRec()
                 clearState()
             }
 
@@ -105,12 +112,22 @@ class AllProductsFragment : Fragment(R.layout.fragment_products_list) {
             dataList, onItemClicked = { productID ->
                 showProductDetails(productID)
             })
-        val layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+        val layoutManager = LinearLayoutManager(
+            requireContext(),
+            RecyclerView.VERTICAL, false
+        )
         binding.rvProducts.adapter = adapter
         binding.rvProducts.layoutManager = layoutManager
     }
 
     private fun showProductDetails(productID: Int) {
-
+        if (navController.currentDestination?.id == R.id.allProductsFragment) {
+            val bundle = Bundle()
+            bundle.putInt(PRODUCT_ID, productID)
+            navController.navigate(
+                R.id.action_allProductsFragment_to_productDetailsFragment,
+                bundle
+            )
+        }
     }
 }

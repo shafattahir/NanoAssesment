@@ -22,6 +22,7 @@ import shafat.projects.assesment.presentation.viewmodels.AuthViewModel
 import shafat.projects.assesment.utils.LoadingScreen
 import shafat.projects.assesment.utils.disableButton
 import shafat.projects.assesment.utils.enableButton
+import shafat.projects.assesment.utils.getAuthToken
 import shafat.projects.assesment.utils.isValidInput
 import shafat.projects.assesment.utils.saveAuthToken
 import shafat.projects.assesment.utils.showSnackBar
@@ -53,10 +54,18 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         init()
+        checkLoginStatus()
         attachClickListeners()
         setStateFlows()
         manageButtonState()
         attachViewModel()
+    }
+
+    private fun checkLoginStatus() {
+        val token = requireContext().getAuthToken()
+        if(token.isNotEmpty()){
+            validateTokenAndFetchData(token)
+        }
     }
 
     private fun init() {

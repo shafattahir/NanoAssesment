@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import shafat.projects.assesment.R
 import shafat.projects.assesment.databinding.ItemProductListBinding
 import shafat.projects.assesment.datasource.beans.response.ProductResponseBean
+import shafat.projects.assesment.utils.setPrice
 
 class ProductsListAdapter(
     val context: Context,
@@ -28,6 +31,18 @@ class ProductsListAdapter(
     }
 
     override fun onBindViewHolder(holder: ListHolder, position: Int) {
+
+        with(holder.itemBinding){
+            itemTitle.text = dataList[position].title
+            itemDesc.text = dataList[position].description
+            itemPrice.setPrice(dataList[position].price.toString())
+            rBar.rating = dataList[position].rating?.rate?:0F
+
+            Glide.with(context)
+                .load(dataList[position].image)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(itemImage)
+        }
         holder.itemView.setOnClickListener {
             onItemClicked(dataList[position].id ?: 0)
         }
