@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="regular_text_default" >
+        <item name="android:textSize">@dimen/regularText</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+    <style name="Base.Theme.BottomNav" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorOnPrimary">@color/primaryColor</item>
+    </style>
+
+    <style name="main_material_text_btn"  parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textAppearance">@style/regular_text_default</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:elevation">@dimen/_2sdp</item>
+        <item name="cornerRadius">@dimen/_8sdp</item>
+        <item name="rippleColor">@color/white</item>
+        <item name="android:backgroundTint">@color/primaryColor</item>
+    </style>
+</resources>

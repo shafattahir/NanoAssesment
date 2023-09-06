@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Nano (Assessment)</string>
+    <string name="something_went_wrong">Something went wrong, Please try latter</string>
+    <string name="image_source">image source</string>
+    <string name="news_details">News Details</string>
+    <string name="account">Account</string>
+    <string name="favorites">Favorites</string>
+    <string name="cart">Cart</string>
+    <string name="all_products">All Products</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="continue_str">Continue</string>
+    <string name="needhelp">NEEDHELP?</string>
+
+    <string name="login_error">Something went wrong, try again!</string>
+    <string name="email_required">Email Required</string>
+    <string name="password_required">Password Required</string>
+</resources>
