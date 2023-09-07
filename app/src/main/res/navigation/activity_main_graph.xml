@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_allProductsFragment"
-            app:destination="@id/allProductsFragment" />
+            app:destination="@id/allProductsFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/activity_main_graph"/>
     </fragment>
     <fragment
         android:id="@+id/allProductsFragment"
@@ -23,6 +25,7 @@
             android:id="@+id/action_allProductsFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/productDetailsFragment"
         android:name="shafat.projects.assesment.presentation.fragments.ProductDetailsFragment"
