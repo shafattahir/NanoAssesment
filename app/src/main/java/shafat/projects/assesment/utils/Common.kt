@@ -77,7 +77,7 @@ fun shareWithFriends(productName: String?,context: Context){
         val shareIntent = Intent(Intent.ACTION_SEND)
         shareIntent.type = "text/plain"
         shareIntent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name))
-        val shareMessage = "\nHi! I would like to invite you ${productName} come join Nano Health app with me"+"\n\n"
+        val shareMessage = "\nHi! I would like to invite you $productName come join Nano Health app with me\n\n"
 
         shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
         context.startActivity(Intent.createChooser(shareIntent, "Choose one"))
