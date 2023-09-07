@@ -12,13 +12,25 @@
         <item name="colorOnPrimary">@color/primaryColor</item>
     </style>
 
-
+    <style name="IconOnlyButton">
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">0dp</item>
+        <item name="android:elevation">@dimen/_2sdp</item>
+        <item name="cornerRadius">23dp</item>
+        <item name="rippleColor">@color/primaryColor</item>
+        <item name="iconTint">@color/primaryColor</item>
+        <item name="backgroundTint">@color/white</item>
+    </style>
 
     <style name="main_material_text_btn"  parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:textAppearance">@style/regular_text_default</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:elevation">@dimen/_2sdp</item>
-        <item name="cornerRadius">@dimen/_8sdp</item>
+        <item name="cornerRadius">43dp</item>
         <item name="rippleColor">@color/white</item>
         <item name="android:backgroundTint">@color/primaryColor</item>
     </style>
@@ -27,4 +39,61 @@
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">#aacbb4</item>
     </style>
+
+
+    <style name="HeadingText" >
+        <item name="android:textSize">@dimen/regularText</item>
+        <item name="android:textColor">@color/textColorDark</item>
+        <item name="fontFamily">@font/opensans_italic_dynamic</item>
+        <item name="fontWeight">300</item>
+        <item name="lineHeight">16.34dp</item>
+    </style>
+
+    <style name="BoldHeadingText" >
+        <item name="android:textSize">@dimen/largeText</item>
+        <item name="android:textColor">@color/textColorDark</item>
+        <item name="fontFamily">@font/opensans_medium</item>
+        <item name="fontWeight">600</item>
+        <item name="lineHeight">20.34dp</item>
+    </style>
+
+    <style name="BoldMediumHeadingText" >
+        <item name="android:textSize">@dimen/XLargeText</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">@font/opensans_bold</item>
+        <item name="fontWeight">600</item>
+        <item name="lineHeight">43.34dp</item>
+    </style>
+
+    <style name="BoldLargeHeadingText" >
+        <item name="android:textSize">@dimen/XXLargeText</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">@font/opensans_bold</item>
+        <item name="fontWeight">600</item>
+        <item name="lineHeight">43.34dp</item>
+    </style>
+
+    <style name="BodyText" >
+        <item name="android:textSize">@dimen/mediumText</item>
+        <item name="android:textColor">@color/textColorRegular</item>
+        <item name="fontFamily">@font/opensans_variablefont</item>
+        <item name="fontWeight">400</item>
+        <item name="lineHeight">22dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.circleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10%</item>
+    </style>
+
+    <style name="regular_edittext_default" >
+        <item name="android:textSize">@dimen/regularText</item>
+        <item name="android:textColor">@color/textColorRegular</item>
+        <item name="fontFamily">@font/opensans_variablefont</item>
+        <item name="android:textColorHint">@color/textColorRegular</item>
+        <item name="colorControlNormal">#c5c5c5</item>
+        <item name="colorControlActivated">@color/textColorRegular</item>
+        <item name="colorControlHighlight">@color/textColorRegular</item>
+    </style>
+
 </resources>

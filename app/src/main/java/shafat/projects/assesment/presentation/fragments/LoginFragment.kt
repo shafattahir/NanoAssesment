@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -86,12 +87,20 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun setStateFlows() {
         if (this::binding.isInitialized) {
             with(binding) {
-                etEmail.doOnTextChanged { text, _, _, _ ->
+                etUserName.doOnTextChanged { text, _, _, _ ->
                     val passwordValid = isValidInput(text.toString())
                     emailAddress.value = passwordValid
-                    if (passwordValid.not()) binding.tilEmail.error =
-                        resources.getString(R.string.email_required)
-                    else binding.tilEmail.error = null
+                    if (passwordValid.not()) {
+                        binding.tilEmail.error = resources.getString(R.string.email_required)
+                        etUserName.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null)
+                    }
+                    else {
+                        binding.tilEmail.error = null
+                        etUserName.setCompoundDrawablesWithIntrinsicBounds(null,
+                            null, ResourcesCompat.getDrawable(resources,R.drawable.ic_tick,null),
+                            null)
+                    }
+
                 }
                 etPassword.doOnTextChanged { text, _, _, _ ->
                     val isEmailValid = isValidInput(text.toString())
@@ -114,7 +123,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun makeLoginRequest() {
         if (this::binding.isInitialized) {
-            val email = binding.etEmail.text.toString()
+            val email = binding.etUserName.text.toString()
             val password = binding.etPassword.text.toString()
 
             viewModel.changeScreenState(

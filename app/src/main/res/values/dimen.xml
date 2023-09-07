@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="smallText">@dimen/_6sdp</dimen>
-    <dimen name="XSmallText">@dimen/_8sdp</dimen>
-    <dimen name="XXSmallText">@dimen/_9sdp</dimen>
-    <dimen name="regularText">@dimen/_11sdp</dimen>
-    <dimen name="mediumText">@dimen/_12sdp</dimen>
-    <dimen name="XLargeText">@dimen/_14sdp</dimen>
-    <dimen name="largeText">@dimen/_16sdp</dimen>
-    <dimen name="xxlargeText">@dimen/_20sdp</dimen>
-    <dimen name="xxxLargeText">@dimen/_24sdp</dimen>
+    <dimen name="smallText">@dimen/_6ssp</dimen>
+    <dimen name="XSmallText">@dimen/_8ssp</dimen>
+    <dimen name="XXSmallText">@dimen/_9ssp</dimen>
+    <dimen name="regularText">@dimen/_12ssp</dimen>
+    <dimen name="mediumText">@dimen/_14ssp</dimen>
+    <dimen name="largeText">@dimen/_15ssp</dimen>
+    <dimen name="XLargeText">@dimen/_28ssp</dimen>
+    <dimen name="XXLargeText">@dimen/_32ssp</dimen>
 
     <dimen name="margin_horizontal">@dimen/_12sdp</dimen>
 
@@ -32,6 +31,6 @@
 
     <dimen name="padding_nav_top">80dp</dimen>
 
-    <dimen name="mainMaterialButtonHeight">@dimen/_46sdp</dimen>
+    <dimen name="mainMaterialButtonHeight">@dimen/_50sdp</dimen>
 
 </resources>

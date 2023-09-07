@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primaryColor">#1ABB9A</color>
-    <color name="secondaryColor"> #002B56</color>
+    <color name="primaryColor">#2AB3C6</color>
+    <color name="secondaryColor">#08293B</color>
+
+    <color name="primaryDarkShade">#188095</color>
 
     <color name="grey">#F1F1F1</color>
+    <color name="darkGrey">#BFC2C8</color>
     <color name="ratingColor">#FFE072</color>
-    <color name="dividerColor">#2C2929</color>
+    <color name="dividerColor">#D8D8D8</color>
     <color name="transparentBlack">#20000000</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="textColorRegular">#838396</color>
+    <color name="textColorDark">#444B51</color>
+    <color name="textColorLight">#2A404B</color>
+    <color name="textColor65Black">#A4000000</color>
+
 </resources>

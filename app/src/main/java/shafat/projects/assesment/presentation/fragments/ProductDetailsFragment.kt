@@ -33,7 +33,7 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
 
     private lateinit var mView: View
     private lateinit var loading: LoadingScreen
-
+    private lateinit var popupFragment : ProductDescriptionBottomSheet
     private var productID = -1
 
     override fun onCreateView(
@@ -51,6 +51,22 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
         getBundleData()
         attachViewModel()
         makeAPICall()
+        attachClickListeners()
+    }
+
+    private fun attachClickListeners() {
+        with(binding){
+            btnBack.setOnClickListener {
+                goBack()
+            }
+        }
+    }
+
+    private fun goBack() {
+        if (this::popupFragment.isInitialized){
+            popupFragment.dialog?.dismiss()
+        }
+        navController.popBackStack()
     }
 
     private fun getBundleData() {
@@ -105,8 +121,7 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
                 .into(itemImage)
         }
 
-        val popupFragment = ProductDescriptionBottomSheet(requireContext(),
-            productDetailObj)
+        popupFragment = ProductDescriptionBottomSheet(productDetailObj)
         if (this::mView.isInitialized) {
             mView.let {
                 popupFragment.show(
@@ -119,7 +134,7 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
 
     private fun makeAPICall() {
         if (productID == -1) {
-            navController.popBackStack()
+           goBack()
         } else {
             viewModel.changeScreenState(
                 ProductScreenState.GetProductDetailsInRequestSend(productID)

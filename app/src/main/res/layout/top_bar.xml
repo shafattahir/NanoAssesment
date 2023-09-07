@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_75sdp"
+        android:background="@drawable/grey_top_sheet"
+        android:elevation="@dimen/_3sdp">
+
+        <TextView
+            android:id="@+id/itemPrice"
+            style="@style/BoldMediumHeadingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="@dimen/margin_horizontal"
+            android:background="@android:color/transparent"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingBottom="@dimen/xXXSmallPadding"
+            android:text="@string/all_products"
+            android:textColor="@color/textColorLight" />
+    </RelativeLayout>
+</layout>

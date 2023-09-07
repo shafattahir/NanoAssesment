@@ -12,7 +12,7 @@ class LoadingScreen(private val context: Context) {
 
     fun displayLoading(cancelable: Boolean) {
         dialog = Dialog(context)
-        dialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
+       // dialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog!!.setContentView(R.layout.layout_loading_screen)
         dialog!!.window!!.setBackgroundDrawable(
             ColorDrawable(
