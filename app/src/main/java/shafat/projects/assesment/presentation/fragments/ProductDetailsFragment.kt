@@ -130,7 +130,7 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
     }
 
     private fun showDialogFragment() {
-        popupFragment = ProductDescriptionBottomSheet(productDetailObj,
+        popupFragment = ProductDescriptionBottomSheet(requireContext(),productDetailObj,
             onCanceled = {
                 binding.showDialog.visibility = View.VISIBLE
             })

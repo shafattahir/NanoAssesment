@@ -2,7 +2,9 @@ package shafat.projects.assesment.utils
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.TextView
@@ -68,5 +70,17 @@ fun TextView.setPrice(value: String) {
 
 fun valueCheck(str: String): String {
     return str.ifEmpty { return "0.0" }
+}
+
+fun shareWithFriends(productName: String?,context: Context){
+    try {
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.type = "text/plain"
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name))
+        val shareMessage = "\nHi! I would like to invite you ${productName} come join Nano Health app with me"+"\n\n"
+
+        shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage)
+        context.startActivity(Intent.createChooser(shareIntent, "Choose one"))
+    } catch (_: Exception) { }
 }
 

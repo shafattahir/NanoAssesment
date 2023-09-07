@@ -1,6 +1,6 @@
 package shafat.projects.assesment.utils
 
-import android.content.DialogInterface
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +14,7 @@ import shafat.projects.assesment.datasource.beans.response.ProductResponseBean
 
 
 class ProductDescriptionBottomSheet(
+    private val context: Context,
     private val productDetailObj:
     ProductResponseBean,
     private val onCanceled: () -> Unit
@@ -62,9 +63,13 @@ class ProductDescriptionBottomSheet(
                 binding.ratingBlock.visibility = View.GONE
             }
         }
+
+        binding.btnShare.setOnClickListener {
+            shareWithFriends(productDetailObj.title,context)
+        }
     }
 
-    override fun onDestroy () {
+    override fun onDestroy() {
         super.onDestroy()
         onCanceled()
     }
