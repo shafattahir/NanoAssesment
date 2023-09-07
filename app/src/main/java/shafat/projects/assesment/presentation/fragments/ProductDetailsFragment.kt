@@ -34,6 +34,8 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
     private lateinit var mView: View
     private lateinit var loading: LoadingScreen
     private lateinit var popupFragment : ProductDescriptionBottomSheet
+
+    private lateinit var  productDetailObj: ProductResponseBean
     private var productID = -1
 
     override fun onCreateView(
@@ -58,6 +60,9 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
         with(binding){
             btnBack.setOnClickListener {
                 goBack()
+            }
+            showDialog.setOnClickListener {
+                showDialogFragment()
             }
         }
     }
@@ -99,7 +104,8 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
 
             is ProductScreenState.GetProductDetailsInSuccessful -> {
                 loading.hideLoading()
-                setupUI(state.productDetailObj!!)
+                productDetailObj = state.productDetailObj!!
+                setupUI()
                 clearState()
             }
 
@@ -113,17 +119,24 @@ class ProductDetailsFragment : Fragment(R.layout.fragment_product_details) {
         }
     }
 
-    private fun setupUI(productDetailObj: ProductResponseBean) {
+    private fun setupUI() {
         with(binding){
             Glide.with(requireContext())
                 .load(productDetailObj.image)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(itemImage)
         }
+        showDialogFragment()
+    }
 
-        popupFragment = ProductDescriptionBottomSheet(productDetailObj)
+    private fun showDialogFragment() {
+        popupFragment = ProductDescriptionBottomSheet(productDetailObj,
+            onCanceled = {
+                binding.showDialog.visibility = View.VISIBLE
+            })
         if (this::mView.isInitialized) {
             mView.let {
+                binding.showDialog.visibility = View.GONE
                 popupFragment.show(
                     parentFragmentManager,
                     "ModalBottomSheet"

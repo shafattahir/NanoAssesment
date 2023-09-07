@@ -1,5 +1,6 @@
 package shafat.projects.assesment.utils
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +15,8 @@ import shafat.projects.assesment.datasource.beans.response.ProductResponseBean
 
 class ProductDescriptionBottomSheet(
     private val productDetailObj:
-    ProductResponseBean
+    ProductResponseBean,
+    private val onCanceled: () -> Unit
 ) :
     BottomSheetDialogFragment(R.layout.product_desc_sheet) {
 
@@ -34,7 +36,7 @@ class ProductDescriptionBottomSheet(
         setClickListeners()
         (dialog as BottomSheetDialog).behavior.peekHeight = 350
         (dialog as BottomSheetDialog).behavior.isHideable = false
-         dialog?.setCanceledOnTouchOutside(false)
+
         with(binding) {
             val ratingValueMessage = "Reviews (${productDetailObj.rating?.count})"
             itemDesc.text = productDetailObj.description
@@ -60,5 +62,10 @@ class ProductDescriptionBottomSheet(
                 binding.ratingBlock.visibility = View.GONE
             }
         }
+    }
+
+    override fun onDestroy () {
+        super.onDestroy()
+        onCanceled()
     }
 }

@@ -71,6 +71,25 @@
                 android:maxLines="1"
                 android:text="@string/details"
                 android:textColor="@color/white" />
+
+            <ImageView
+                android:id="@+id/showDialog"
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/xXXSmallPadding"
+                android:layout_marginEnd="@dimen/xXXSmallPadding"
+                android:visibility="gone"
+                android:layout_marginBottom="@dimen/largePadding"
+                android:background="@drawable/button_bg"
+                android:clickable="true"
+                android:contentDescription="@string/image_source"
+                android:elevation="@dimen/xXXSmallPadding"
+                android:focusable="true"
+                android:foreground="?selectableItemBackground"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/baseline_keyboard_double_arrow_up_24" />
         </RelativeLayout>
 
     </FrameLayout>
